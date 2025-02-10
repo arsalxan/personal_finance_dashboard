@@ -3,9 +3,13 @@ package personal_finance_dashboard;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.text.*;
 
-public class Login extends JFrame {
+public class Login extends JFrame implements ActionListener {
+    // class to limit the entry from user
     public static class LimitedDocument extends PlainDocument {
         private int maxLength;
 
@@ -22,8 +26,9 @@ public class Login extends JFrame {
     }
 
     JLabel title, username, password;
-    JTextField usertf, passtf;
-    JButton clear, login, signin;
+    JTextField usertf;
+    JPasswordField passtf;
+    JButton clear, login, signup;
 
     Login() {
 
@@ -51,12 +56,12 @@ public class Login extends JFrame {
         password.setBounds(50, 100, 100, 15);
         password.setFont(new Font("Raleway", Font.ITALIC, 18));
         password.setForeground(Color.white);
+        
         add(password);
 
-        passtf = new JTextField();
+        passtf = new JPasswordField();
         passtf.setBounds(155, 100, 180, 20);
-        passtf.setFont(new Font("Raleway", Font.ITALIC, 18));
-        passtf.setForeground(Color.black);
+        passtf.setDocument(new LimitedDocument(4));
         add(passtf);
 
         login = new JButton("Login");
@@ -67,13 +72,37 @@ public class Login extends JFrame {
         clear = new JButton("Clear");
         clear.setBounds(250, 120, 80, 20);
         clear.setForeground(Color.BLACK);
+        //to perform action of button
+        clear.addActionListener(this);
         add(clear);
+        
+
+        signup= new JButton("Sign Up");
+        signup.setBounds(158, 141, 173, 20);
+        signup.setForeground(Color.BLACK);
+        signup.addActionListener(this);
+        add(signup);
 
         setLayout(null);
-        setSize(400, 400);
-        setLocation(400, 400);
+        setSize(400, 250);
+        setLocation(400, 200);
         getContentPane().setBackground(Color.DARK_GRAY);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+    }
+    public void actionPerformed(ActionEvent ae){
+        if(ae.getSource()==clear){
+           usertf.setText("");
+           passtf.setText("");
+        }
+        else if(ae.getSource()==login){
 
+        }
+        else if(ae.getSource()==signup){
+            // setVisible(false);
+            dispose();
+            new SignUp().setVisible(true);
+        }
     }
 
     public static void main(String[] args) {
