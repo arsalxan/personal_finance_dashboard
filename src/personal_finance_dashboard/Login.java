@@ -1,13 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package personal_finance_dashboard;
 
-/**
- *
- * @author mdarsalansiddiqui
- */
-public class Login {
+
+
+import javax.swing.*;
+
+public class Login extends JFrame{
+    Login(){
+        setLayout(null);
+        setSize(400,400);
+        setLocation(400 , 400);
+        setVisible(true);
+    }
     
+    public static void main(String[] args) {
+        new Login();
+    }
 }
+
