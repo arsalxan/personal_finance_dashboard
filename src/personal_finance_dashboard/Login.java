@@ -1,76 +1,68 @@
 
 package personal_finance_dashboard;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.text.*;
+import javax.swing.*;
 
 public class Login extends JFrame implements ActionListener {
-    // class to limit the entry from user
-    public static class LimitedDocument extends PlainDocument {
-        private int maxLength;
+    
 
-        public LimitedDocument(int maxLength) {
-            this.maxLength = maxLength;
-        }
-
-        @Override
-        public void insertString(int offset, String str, AttributeSet attr) throws BadLocationException {
-            if (str != null && getLength() + str.length() <= maxLength) {
-                super.insertString(offset, str, attr);
-            }
-        }
-    }
-
-    JLabel title, username, password;
+    JLabel title, username, password , logo;
     JTextField usertf;
     JPasswordField passtf;
     JButton clear, login, signup;
+    ImageIcon icon , scaledIcon;
+    Image image;
 
     Login() {
 
-        setVisible(true);
         setTitle("Get your Finance personalised");
         title = new JLabel("\"LOGIN OR START NEW WITH US\"");
-        title.setBounds(25, 10, 400, 25);
+        title.setBounds(220, 80, 520, 25);
         title.setForeground(Color.white);
-        title.setFont(new Font("Raleway", Font.BOLD, 20));
+        title.setFont(new Font("Raleway", Font.BOLD, 24));
         add(title);
 
+        icon = new ImageIcon(getClass().getResource("/personal_finance_dashboard/icons/loogo.png"));
+        image = icon.getImage().getScaledInstance(80, 80, Image.SCALE_DEFAULT);
+        scaledIcon = new ImageIcon(image);
+        logo = new JLabel(scaledIcon);
+        logo.setBounds(100, 50, 80, 80);
+        add(logo);
+
         username = new JLabel("Username:");
-        username.setBounds(50, 50, 100, 20);
-        username.setFont(new Font("Raleway", Font.ITALIC, 18));
+        username.setBounds(250, 170, 150, 40);
+        username.setFont(new Font("Raleway", Font.BOLD, 22));
         username.setForeground(Color.white);
         add(username);
 
         usertf = new JTextField();
-        usertf.setBounds(155, 50, 180, 20);
-        usertf.setFont(new Font("Raleway", Font.ITALIC, 18));
+        usertf.setBounds(420, 170, 240, 40);
+        usertf.setFont(new Font("Raleway", Font.BOLD, 18));
         usertf.setForeground(Color.black);
         add(usertf);
 
         password = new JLabel("Password:");
-        password.setBounds(50, 100, 100, 15);
-        password.setFont(new Font("Raleway", Font.ITALIC, 18));
+        password.setBounds(250, 220, 150, 40);
+        password.setFont(new Font("Raleway", Font.BOLD, 22));
         password.setForeground(Color.white);
-        
         add(password);
 
         passtf = new JPasswordField();
-        passtf.setBounds(155, 100, 180, 20);
+        passtf.setBounds(420, 220, 240, 40);
+        passtf.setFont(new Font("Raleway", Font.BOLD, 22));
         passtf.setDocument(new LimitedDocument(4));
         add(passtf);
 
         login = new JButton("Login");
-        login.setBounds(158, 120, 80, 20);
+        login.setBounds(280, 320, 100, 40);
         login.setForeground(Color.BLACK);
         add(login);
 
         clear = new JButton("Clear");
-        clear.setBounds(250, 120, 80, 20);
+        clear.setBounds(430, 320, 100, 40);
         clear.setForeground(Color.BLACK);
         //to perform action of button
         clear.addActionListener(this);
@@ -78,16 +70,17 @@ public class Login extends JFrame implements ActionListener {
         
 
         signup= new JButton("Sign Up");
-        signup.setBounds(158, 141, 173, 20);
+        signup.setBounds(560, 320, 100, 40);
         signup.setForeground(Color.BLACK);
         signup.addActionListener(this);
         add(signup);
 
         setLayout(null);
-        setSize(400, 250);
-        setLocation(400, 200);
+        setSize(800, 600);
+        setLocation(500, 200);
         getContentPane().setBackground(Color.DARK_GRAY);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
         
     }
     public void actionPerformed(ActionEvent ae){
