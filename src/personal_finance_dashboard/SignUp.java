@@ -14,13 +14,19 @@ import javax.swing.JTextField;
 public class SignUp extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent ae){
-        
+        if(ae.getSource()==clear){
+            passtf.setText("");
+            usertf.setText("");
+        }
+        else if(ae.getSource()==proceed){
+
+        }
     }
 
     JLabel income, username, password , logo;
     JTextField usertf;
     JPasswordField passtf;
-    JButton clear, login, signup;
+    JButton clear, proceed;
     ImageIcon icon , scaledIcon;
     Image image;
     JCheckBox salary , rent , freelance;
@@ -41,7 +47,7 @@ public class SignUp extends JFrame implements ActionListener{
         logo.setBounds(100, 50, 80, 80);
         add(logo);
 
-        username = new JLabel("Enter your name");
+        username = new JLabel("Set a username:");
         username.setBounds(120, 170, 250, 40);
         username.setFont(new Font("Raleway", Font.BOLD, 22));
         username.setForeground(Color.white);
@@ -96,16 +102,16 @@ public class SignUp extends JFrame implements ActionListener{
         clear = new JButton("Clear");
         clear.setBounds(250, 400, 100, 40);
         clear.setForeground(Color.BLACK);
-        //to perform action of button
+        //to perform action of button(clearing the text fields)
         clear.addActionListener(this);
         add(clear);
         
 
-        signup= new JButton("Proceed");
-        signup.setBounds(380, 400, 100, 40);
-        signup.setForeground(Color.BLACK);
-        signup.addActionListener(this);
-        add(signup);
+        proceed= new JButton("Proceed");
+        proceed.setBounds(380, 400, 100, 40);
+        proceed.setForeground(Color.BLACK);
+        proceed.addActionListener(this);
+        add(proceed);
 
 
         setLayout(null);
@@ -113,7 +119,7 @@ public class SignUp extends JFrame implements ActionListener{
         setLocation(500, 200);
         getContentPane().setBackground(Color.DARK_GRAY);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        setVisible(true);
     }
     
    
