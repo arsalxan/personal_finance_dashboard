@@ -119,7 +119,7 @@ public class SignUp extends JFrame implements ActionListener{
 
         setLayout(null);
         setSize(800, 600);
-        setLocation(500, 200);
+        setLocation(300, 150);
         getContentPane().setBackground(Color.DARK_GRAY);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
