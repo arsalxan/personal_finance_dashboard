@@ -1,11 +1,14 @@
 
 package personal_finance_dashboard;
-// import java.awt.*;
-import java.awt.Image;
-import java.awt.Font;
+
 import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -22,11 +25,12 @@ public class SignUp extends JFrame implements ActionListener{
             usertf.setText("");
         }
         else if(ae.getSource()==proceed){
-
+            dispose();
+            new Dashboard();
         }
     }
 
-    JLabel income, username, password , logo;
+    JLabel income, username, password , logo , login;
     JTextField usertf;
     JPasswordField passtf;
     JButton clear, proceed;
@@ -116,6 +120,18 @@ public class SignUp extends JFrame implements ActionListener{
         proceed.addActionListener(this);
         add(proceed);
 
+        login = new JLabel("Already an existing user ?");
+        login.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        login.setBounds(280, 450, 200, 40);
+        login.setForeground(Color.WHITE);
+        login.addMouseListener(new MouseAdapter(){
+            public void mouseClicked(MouseEvent e){
+                dispose();
+                new Login();
+            }
+        });
+        add(login);
+
 
         setLayout(null);
         setSize(800, 600);
@@ -129,4 +145,5 @@ public class SignUp extends JFrame implements ActionListener{
     public static void main(String [] args){
         new SignUp();
     }
+
 }
